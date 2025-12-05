@@ -24,4 +24,14 @@ productos entregables:
     estructura del proyecto basado en mvc
     archivo principal main funcionado
     interacción con las interfaces
+
+
+
+4 diciembre
+4)CONTROLADOR
+    1.1 insertar_camionetas()
+    1.2 consultar_camionetas()
+    1.3 cambiar_camionetas()
+    1.4 borrar_camionetas()
+
 '''

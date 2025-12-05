@@ -15,7 +15,7 @@ class MenuCamiones:
     def menu_acciones_camiones(self):
         self.limipia_ventana()
         self.ventana.title("Menu Acciones Camiones")
-        Label(self.ventana, text="CAMIONES", font=("Times New Roman", 24,"bold")).pack(pady=20)
+        Label(self.ventana, text="CAMIONES", font=("Kalam", 24,"bold")).pack(pady=20)
 
         Button(self.ventana, text="Insertar Camion", command=self.insertar_camiones).pack(pady=10)
         Button(self.ventana, text="Consultar Camiones", command=self.consultar_camiones).pack(pady=10)
@@ -27,7 +27,7 @@ class MenuCamiones:
     def insertar_camiones(self):
         self.limipia_ventana()
         self.ventana.title("Insertar Camiones")
-        Label(self.ventana, text="INSERTAR CAMION", font=("Times New Roman", 24,"bold")).pack(pady=20)
+        Label(self.ventana, text="INSERTAR CAMION", font=("Kalam", 24,"bold")).pack(pady=20)
 
         Label(self.ventana, text="Marca:").pack(); self.cam_marca = Entry(self.ventana); self.cam_marca.pack()
         Label(self.ventana, text="Color:").pack(); self.cam_color = Entry(self.ventana); self.cam_color.pack()
@@ -80,7 +80,7 @@ class MenuCamiones:
     def actualizar_camiones(self):
         self.limipia_ventana()
         self.ventana.title("Actualizar Camion")
-        Label(self.ventana, text="ACTUALIZAR CAMION", font=("Times New Roman", 24,"bold")).pack(pady=20)
+        Label(self.ventana, text="ACTUALIZAR CAMION", font=("Kalam", 24,"bold")).pack(pady=20)
         
         Label(self.ventana, text="ID a actualizar:").pack(); self.cam_id_upd = Entry(self.ventana); self.cam_id_upd.pack()
         Label(self.ventana, text="Nueva Capacidad:").pack(); self.cam_carga_upd = Entry(self.ventana); self.cam_carga_upd.pack()
@@ -91,7 +91,7 @@ class MenuCamiones:
     def borrar_camiones(self):
         self.limipia_ventana()
         self.ventana.title("Borrar Camion")
-        Label(self.ventana, text="BORRAR CAMION", font=("Times New Roman", 24,"bold")).pack(pady=20)
+        Label(self.ventana, text="BORRAR CAMION", font=("Kalam", 24,"bold")).pack(pady=20)
 
         Label(self.ventana, text="ID a eliminar:").pack(); self.cam_id_del = Entry(self.ventana); self.cam_id_del.pack()
 

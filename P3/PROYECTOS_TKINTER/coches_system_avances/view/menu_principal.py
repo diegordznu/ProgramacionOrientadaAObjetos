@@ -24,7 +24,7 @@ class MenuPrincipal:
         frame_menu = Frame(self.ventana)
         frame_menu.pack(expand=True)
 
-        Label(frame_menu, text="GESTION DE COCHES", font=("Times New Roman", 24,"bold")).pack(pady=20)
+        Label(frame_menu, text="GESTION DE COCHES", font=("Kalam", 24,"bold")).pack(pady=20)
 
         # He conectado los comandos a sus funciones correspondientes
         Button(frame_menu, text="Coches", command=self.abrir_coches).pack(pady=10)

@@ -15,7 +15,7 @@ class MenuCamionetas:
     def menu_acciones_camionetas(self):
         self.limipia_ventana()
         self.ventana.title("Menu Acciones Camionetas")
-        Label(self.ventana, text="CAMIONETAS", font=("Times New Roman", 24,"bold")).pack(pady=20)
+        Label(self.ventana, text="CAMIONETAS", font=("Kalam", 24,"bold")).pack(pady=20)
 
         Button(self.ventana, text="Insertar Camioneta", command=self.insertar_camionetas).pack(pady=10)
         Button(self.ventana, text="Consultar Camionetas", command=self.consultar_camionetas).pack(pady=10)
@@ -27,7 +27,7 @@ class MenuCamionetas:
     def insertar_camionetas(self):
         self.limipia_ventana()
         self.ventana.title("Insertar Camionetas")
-        Label(self.ventana, text="INSERTAR CAMIONETA", font=("Times New Roman", 24,"bold")).pack(pady=20)
+        Label(self.ventana, text="INSERTAR CAMIONETA", font=("Kalam", 24,"bold")).pack(pady=20)
 
         # Definición de campos
         Label(self.ventana, text="Marca:").pack(); self.cta_marca = Entry(self.ventana); self.cta_marca.pack()
@@ -65,7 +65,7 @@ class MenuCamionetas:
     def consultar_camionetas(self):
         self.limipia_ventana()
         self.ventana.title("Consultar Camionetas")
-        Label(self.ventana, text="LISTADO CAMIONETAS", font=("Times New Roman", 24,"bold")).pack(pady=20)
+        Label(self.ventana, text="LISTADO CAMIONETAS", font=("Kalam", 24,"bold")).pack(pady=20)
 
         # Llamada al MODELO
         registros = CamionetasController.consultar()
@@ -84,7 +84,7 @@ class MenuCamionetas:
     def actualizar_camionetas(self):
         self.limipia_ventana()
         self.ventana.title("Actualizar Camioneta")
-        Label(self.ventana, text="ACTUALIZAR CAMIONETA", font=("Times New Roman", 24,"bold")).pack(pady=20)
+        Label(self.ventana, text="ACTUALIZAR CAMIONETA", font=("Kalam", 24,"bold")).pack(pady=20)
         
         Label(self.ventana, text="ID a actualizar:").pack(); self.cta_id_upd = Entry(self.ventana); self.cta_id_upd.pack()
         # Aquí puedes añadir los campos que quieras editar
@@ -96,7 +96,7 @@ class MenuCamionetas:
     def borrar_camionetas(self):
         self.limipia_ventana()
         self.ventana.title("Borrar Camioneta")
-        Label(self.ventana, text="BORRAR CAMIONETA", font=("Times New Roman", 24,"bold")).pack(pady=20)
+        Label(self.ventana, text="BORRAR CAMIONETA", font=("Kalam", 24,"bold")).pack(pady=20)
 
         Label(self.ventana, text="ID a eliminar:").pack()
         self.cta_id_del = Entry(self.ventana)

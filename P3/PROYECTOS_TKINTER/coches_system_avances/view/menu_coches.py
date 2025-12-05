@@ -15,7 +15,7 @@ class MenuCoches:
     def menu_acciones_coches(self):
         self.limipia_ventana()
         self.ventana.title("Menu Acciones Autos")
-        Label(self.ventana, text="AUTOS", font=("Times New Roman", 24,"bold")).pack(pady=20)
+        Label(self.ventana, text="AUTOS", font=("Kalam", 24,"bold")).pack(pady=20)
 
         Button(self.ventana, text="Insertar Autos", command=self.insertar_autos).pack(pady=10)
         Button(self.ventana, text="Consultar Autos", command=self.consultar_autos).pack(pady=10)
@@ -27,7 +27,7 @@ class MenuCoches:
     def insertar_autos(self):
         self.limipia_ventana()
         self.ventana.title("Insertar Autos")
-        Label(self.ventana, text="INSERTAR AUTOS", font=("Times New Roman", 24,"bold")).pack(pady=20)
+        Label(self.ventana, text="INSERTAR AUTOS", font=("Kalam", 24,"bold")).pack(pady=20)
 
         Label(self.ventana, text="Marca:").pack(pady=5); self.c_marca = Entry(self.ventana); self.c_marca.pack()
         Label(self.ventana, text="Color:").pack(pady=5); self.c_color = Entry(self.ventana); self.c_color.pack()
@@ -58,7 +58,7 @@ class MenuCoches:
     def consultar_autos(self):
         self.limipia_ventana()
         self.ventana.title("Consultar Autos")
-        Label(self.ventana, text="LISTADO DE AUTOS", font=("Times New Roman", 24,"bold")).pack(pady=20)
+        Label(self.ventana, text="LISTADO DE AUTOS", font=("Kalam", 24,"bold")).pack(pady=20)
 
         # Conexión real al modelo
         registros = AutosController.consultar()
@@ -80,7 +80,7 @@ class MenuCoches:
     def actualizar_autos(self):
         self.limipia_ventana()
         self.ventana.title("Actualizar Autos")
-        Label(self.ventana, text="ACTUALIZAR AUTOS", font=("Times New Roman", 24,"bold")).pack(pady=20)
+        Label(self.ventana, text="ACTUALIZAR AUTOS", font=("Kalam", 24,"bold")).pack(pady=20)
 
         Label(self.ventana, text="ID del Auto a actualizar:").pack(pady=5)
         self.c_id_upd = Entry(self.ventana)
@@ -96,7 +96,7 @@ class MenuCoches:
     def borrar_autos(self):
         self.limipia_ventana()
         self.ventana.title("Borrar Autos")
-        Label(self.ventana, text="BORRAR AUTOS", font=("Times New Roman", 24,"bold")).pack(pady=20)
+        Label(self.ventana, text="BORRAR AUTOS", font=("Kalam", 24,"bold")).pack(pady=20)
 
         Label(self.ventana, text="Introduce el ID que deseas eliminar:").pack(pady=10)
         self.c_id_del = Entry(self.ventana)
