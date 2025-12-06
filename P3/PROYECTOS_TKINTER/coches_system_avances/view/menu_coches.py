@@ -82,21 +82,78 @@ class MenuCoches:
         self.ventana.title("Actualizar Autos")
         Label(self.ventana, text="ACTUALIZAR AUTOS", font=("Kalam", 24,"bold")).pack(pady=20)
 
+        registros = AutosController.consultar()
+        
+        cadena=""
+        if not registros:
+            cadena = "No hay autos registrados."
+        else:
+            for registro in registros:
+                # Ajustado a tu SQL: id, color, marca, modelo, velocidad, caballaje, plazas
+                # Nota: Verifica el orden de columnas en tu BD, aquí asumo el orden estándar del SELECT *
+                cadena += f"ID: {registro[0]} | Marca: {registro[2]} | Color: {registro[1]} | Modelo: {registro[3]} | Vel: {registro[4]}\n"
+        
+        lbl_registros = Label(self.ventana, text=cadena, justify=LEFT)
+        lbl_registros.pack(pady=10)
+
         Label(self.ventana, text="ID del Auto a actualizar:").pack(pady=5)
         self.c_id_upd = Entry(self.ventana)
         self.c_id_upd.pack()
         
+        Label(self.ventana, text="Nueva Marca:").pack(pady=5)
+        self.c_marca_upd = Entry(self.ventana)
+        self.c_marca_upd.pack()
         Label(self.ventana, text="Nuevo Color:").pack(pady=5)
         self.c_color_upd = Entry(self.ventana)
         self.c_color_upd.pack()
+        Label(self.ventana, text="Nuevo Modelo:").pack(pady=5)
+        self.c_modelo_upd = Entry(self.ventana)
+        self.c_modelo_upd.pack()
+        Label(self.ventana, text="Nueva Velocidad:").pack(pady=5)
+        self.c_vel_upd = Entry(self.ventana)
+        self.c_vel_upd.pack()
+        Label(self.ventana, text="Nuevo Caballaje:").pack(pady=5)
+        self.c_cab_upd = Entry(self.ventana)
+        self.c_cab_upd.pack()
+        Label(self.ventana, text="Nuevas Plazas:").pack(pady=5)
+        self.c_plazas_upd = Entry(self.ventana)
+        self.c_plazas_upd.pack()
 
-        Button(self.ventana, text="Actualizar", command=lambda: messagebox.showinfo("Info", "Conectar Update Model")).pack(pady=20)
+        def actualizar_auto():
+            if AutosController.actualizar(
+                self.c_id_upd.get(),
+                self.c_marca_upd.get(),
+                self.c_color_upd.get(),
+                self.c_modelo_upd.get(),
+                self.c_vel_upd.get(),
+                self.c_cab_upd.get(),
+                self.c_plazas_upd.get(),
+            ):
+                messagebox.showinfo("Éxito", "Auto actualizado correctamente")
+                self.menu_acciones_coches()
+            else:
+                messagebox.showerror("Error", "Error al actualizar el auto")
+
+        Button(self.ventana, text="Actualizar", command=actualizar_auto).pack(pady=20)
         Button(self.ventana, text="Regresar", command=self.menu_acciones_coches).pack(pady=10)
 
     def borrar_autos(self):
         self.limipia_ventana()
         self.ventana.title("Borrar Autos")
         Label(self.ventana, text="BORRAR AUTOS", font=("Kalam", 24,"bold")).pack(pady=20)
+        registros = AutosController.consultar()
+        
+        cadena=""
+        if not registros:
+            cadena = "No hay autos registrados."
+        else:
+            for registro in registros:
+                # Ajustado a tu SQL: id, color, marca, modelo, velocidad, caballaje, plazas
+                # Nota: Verifica el orden de columnas en tu BD, aquí asumo el orden estándar del SELECT *
+                cadena += f"ID: {registro[0]} | Marca: {registro[2]} | Color: {registro[1]} | Modelo: {registro[3]} | Vel: {registro[4]}\n"
+        
+        lbl_registros = Label(self.ventana, text=cadena, justify=LEFT)
+        lbl_registros.pack(pady=10)
 
         Label(self.ventana, text="Introduce el ID que deseas eliminar:").pack(pady=10)
         self.c_id_del = Entry(self.ventana)

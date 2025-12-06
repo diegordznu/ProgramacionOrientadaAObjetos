@@ -81,17 +81,68 @@ class MenuCamiones:
         self.limipia_ventana()
         self.ventana.title("Actualizar Camion")
         Label(self.ventana, text="ACTUALIZAR CAMION", font=("Kalam", 24,"bold")).pack(pady=20)
-        
         Label(self.ventana, text="ID a actualizar:").pack(); self.cam_id_upd = Entry(self.ventana); self.cam_id_upd.pack()
-        Label(self.ventana, text="Nueva Capacidad:").pack(); self.cam_carga_upd = Entry(self.ventana); self.cam_carga_upd.pack()
+        registros = CamionesController.consultar()
+        
+        cadena=""
+        if not registros:
+            cadena = "No hay camiones registrados."
+        else:
+            for registro in registros:
+                # Ajustado a tu SQL: id, color, marca, modelo, velocidad, caballaje, plazas
+                # Nota: Verifica el orden de columnas en tu BD, aquí asumo el orden estándar del SELECT *
+                cadena += f"ID: {registro[0]} | Marca: {registro[1]} | Color: {registro[2]} | Modelo: {registro[3]} | Vel: {registro[4]} | Caballaje: {registro[5]} | Plazas: {registro[6]} | Eje: {registro[7]} | Capacidad {registro[8]} \n"
+        
+        lbl_registros = Label(self.ventana, text=cadena, justify=LEFT)
+        lbl_registros.pack(pady=10)
 
-        Button(self.ventana, text="Actualizar", command=lambda: messagebox.showinfo("Info", "Actualizar Camion")).pack(pady=20)
+        Label(self.ventana, text="Nueva marca:").pack(); self.cam_marca_upd = Entry(self.ventana); self.cam_marca_upd.pack()
+        Label(self.ventana, text="Nuevo color:").pack(); self.cam_color_upd = Entry(self.ventana); self.cam_color_upd.pack()
+        Label(self.ventana, text="Nuevo modelo:").pack(); self.cam_modelo_upd = Entry(self.ventana); self.cam_modelo_upd.pack()
+        Label(self.ventana, text="Nueva velocidad:").pack(); self.cam_vel_upd = Entry(self.ventana); self.cam_vel_upd.pack()
+        Label(self.ventana, text="Nuevo caballaje:").pack(); self.cam_cab_upd = Entry(self.ventana); self.cam_cab_upd.pack()
+        Label(self.ventana, text="Nuevas plazas:").pack(); self.cam_plazas_upd = Entry(self.ventana); self.cam_plazas_upd.pack()
+        Label(self.ventana, text="Nuevo eje:").pack(); self.cam_eje_upd = Entry(self.ventana); self.cam_eje_upd.pack()
+        Label(self.ventana, text="Nueva capacidad de carga:").pack(); self.cam_carga_upd = Entry(self.ventana); self.cam_carga_upd.pack()
+
+
+        def actualizar_camion():
+            if CamionesController.actualizar(
+                self.cam_id_upd.get(),
+                self.cam_marca_upd.get(),
+                self.cam_color_upd.get(),
+                self.cam_modelo_upd.get(),
+                self.cam_vel_upd.get(),
+                self.cam_cab_upd.get(),
+                self.cam_plazas_upd.get(),
+                self.cam_eje_upd.get(),
+                self.cam_carga_upd.get()
+            ):
+                messagebox.showinfo("Éxito", "Camión actualizado correctamente")
+                self.menu_acciones_camiones()
+            else:
+                messagebox.showerror("Error", "Error al actualizar el camión")
+
+        Button(self.ventana, text="Actualizar", command=actualizar_camion).pack(pady=20)
         Button(self.ventana, text="Regresar", command=self.menu_acciones_camiones).pack(pady=10)
 
     def borrar_camiones(self):
         self.limipia_ventana()
         self.ventana.title("Borrar Camion")
         Label(self.ventana, text="BORRAR CAMION", font=("Kalam", 24,"bold")).pack(pady=20)
+        registros = CamionesController.consultar()
+        
+        cadena=""
+        if not registros:
+            cadena = "No hay camiones registrados."
+        else:
+            for registro in registros:
+                # Ajustado a tu SQL: id, color, marca, modelo, velocidad, caballaje, plazas
+                # Nota: Verifica el orden de columnas en tu BD, aquí asumo el orden estándar del SELECT *
+                cadena += f"ID: {registro[0]} | Color: {registro[2]} | Marca: {registro[1]} | Modelo: {registro[3]} | Vel: {registro[4]} | Caballaje: {registro[5]} | Plazas: {registro[6]} | Eje: {registro[7]} | Capacidad {registro[8]} \n"
+        
+        lbl_registros = Label(self.ventana, text=cadena, justify=LEFT)
+        lbl_registros.pack(pady=10)
 
         Label(self.ventana, text="ID a eliminar:").pack(); self.cam_id_del = Entry(self.ventana); self.cam_id_del.pack()
 

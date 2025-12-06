@@ -34,4 +34,15 @@ productos entregables:
     1.3 cambiar_camionetas()
     1.4 borrar_camionetas()
 
+    
+5 DICIEMBRE
+    1) CONTROLADOR:
+    1.1 insertar_camionetas()
+    1.2 consultar_camionetas()
+    1.3 cambiar_camionetas()
+    1.4 borrar_camionetas()
+
+    Productos Entregables:
+    **Interacción con la funcionalidad (controlador) de las interfaces anteriores
+    **Nombre del Commit: "commit_05_12_25"
 '''

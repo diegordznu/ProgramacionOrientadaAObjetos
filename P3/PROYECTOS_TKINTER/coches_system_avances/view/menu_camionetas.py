@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
+from model import camionetas
 from controller.camionetas_controller import CamionetasController
 
 class MenuCamionetas:
@@ -85,12 +86,64 @@ class MenuCamionetas:
         self.limipia_ventana()
         self.ventana.title("Actualizar Camioneta")
         Label(self.ventana, text="ACTUALIZAR CAMIONETA", font=("Kalam", 24,"bold")).pack(pady=20)
+        registros = CamionetasController.consultar()
         
-        Label(self.ventana, text="ID a actualizar:").pack(); self.cta_id_upd = Entry(self.ventana); self.cta_id_upd.pack()
-        # Aquí puedes añadir los campos que quieras editar
-        Label(self.ventana, text="Nueva Tracción:").pack(); self.cta_traccion_upd = Entry(self.ventana); self.cta_traccion_upd.pack()
+        cadena = ""
+        if not registros:
+            cadena = "No hay camionetas registradas."
+        else:
+            for registro in registros:
+                # registro es una tupla: (id, color, marca, modelo, velocidad, caballaje, plazas, traccion, cerrada)
+                cadena += f"ID: {registro[0]} | Marca: {registro[2]} | Modelo: {registro[3]} | Tracción: {registro[7]}\n"
 
-        Button(self.ventana, text="Actualizar", command=lambda: messagebox.showinfo("Info", "Actualizar Camioneta")).pack(pady=20)
+        Label(self.ventana, text="ID de la camioneta a actualizar:").pack(pady=5)
+        self.c_id_upd = Entry(self.ventana)
+        self.c_id_upd.pack()
+        
+        Label(self.ventana, text="Nueva Marca:").pack(pady=5)
+        self.c_marca_upd = Entry(self.ventana)
+        self.c_marca_upd.pack()
+        Label(self.ventana, text="Nuevo Color:").pack(pady=5)
+        self.c_color_upd = Entry(self.ventana)
+        self.c_color_upd.pack()
+        Label(self.ventana, text="Nuevo Modelo:").pack(pady=5)
+        self.c_modelo_upd = Entry(self.ventana)
+        self.c_modelo_upd.pack()
+        Label(self.ventana, text="Nueva Velocidad:").pack(pady=5)
+        self.c_vel_upd = Entry(self.ventana)
+        self.c_vel_upd.pack()
+        Label(self.ventana, text="Nuevo Caballaje:").pack(pady=5)
+        self.c_cab_upd = Entry(self.ventana)
+        self.c_cab_upd.pack()
+        Label(self.ventana, text="Nuevas Plazas:").pack(pady=5)
+        self.c_plazas_upd = Entry(self.ventana)
+        self.c_plazas_upd.pack()
+        Label(self.ventana, text="Tracción (4x2, 4x4, etc.):").pack(pady=5)
+        self.c_traccion_upd = Entry(self.ventana)
+        self.c_traccion_upd.pack()
+        Label(self.ventana, text="Cerrada (1=Sí/0=No):").pack(pady=5)
+        self.c_cerrada_upd = Entry(self.ventana)
+        self.c_cerrada_upd.pack()
+
+        def actualizar_camioneta():
+            if CamionetasController.actualizar(
+                self.c_id_upd.get(),
+                self.c_marca_upd.get(),
+                self.c_color_upd.get(),
+                self.c_modelo_upd.get(),
+                self.c_vel_upd.get(),
+                self.c_cab_upd.get(),
+                self.c_plazas_upd.get(),
+                self.c_traccion_upd.get(),
+                self.c_cerrada_upd.get()
+            ):
+                messagebox.showinfo("Éxito", "Camioneta actualizada correctamente")
+                self.menu_acciones_camionetas()
+            else:
+                messagebox.showerror("Error", "Error al actualizar la camioneta")
+
+
+        Button(self.ventana, text="Actualizar", command=actualizar_camioneta).pack(pady=20)
         Button(self.ventana, text="Regresar", command=self.menu_acciones_camionetas).pack(pady=10)
 
     def borrar_camionetas(self):
